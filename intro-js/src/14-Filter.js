@@ -1,5 +1,5 @@
 //Filter, Some , Find
-const invoices = [
+export const invoices = [
     {
         id:1,
         nameInvoice: 'Compras',
