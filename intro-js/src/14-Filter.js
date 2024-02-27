@@ -1,5 +1,5 @@
 //Filter, Some , Find
-export const invoices = [
+ const invoices = [
     {
         id:1,
         nameInvoice: 'Compras',
@@ -98,8 +98,32 @@ export const invoices = [
     }
 ]
 
-const invoicesClone = invoices.find(f => f.client.name === 'fulanito')
-console.log(invoicesClone)
+const invoiceByClientName = (clientName) => {
+    return invoices.find(i => i.client.name === clientName);
+}
 
-const filtered = invoices.filter(f => f.id >1)
-console.log(filtered)
+const invoiceById = (id) => {
+    return invoices.find(i => i.id === id)
+}
+
+const findInvoice = (id) => {
+    const promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const result = invoiceById(id);
+           if(result){
+            resolve(result);
+           }else{
+            reject('id no existe');
+           }
+        }, 4000);
+    });
+
+    return promise;
+}
+
+export {
+    invoices as default,
+    invoiceByClientName,
+    invoiceById,
+    findInvoice
+}
